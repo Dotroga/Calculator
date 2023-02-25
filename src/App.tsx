@@ -5,13 +5,17 @@ import {buttons, reducer, value} from "./reducer";
 
 
 const App = () => {
+
   const [state, dispatch] = useReducer(reducer, value)
+  const change = (type: string) => dispatch(type)
+
   return (
     <div className="App">
       <div className='Screen'>
-        {state}
+        <div>{state[0]}</div>
+        <div>{state[1]}</div>
       </div>
-      <Buttons buttons={buttons}/>
+      <Buttons buttons={buttons} callBack={change}/>
     </div>
   );
 }

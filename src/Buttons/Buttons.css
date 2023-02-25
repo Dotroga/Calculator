@@ -8,8 +8,16 @@
     display: grid;
     align-items: center;
     justify-content: center;
+    font-size: 26px;
     background-color: #e8ebfe;
     cursor: pointer;
+    user-select: none;
+}
+.button:hover {
+    background-color: #e1e4f6;
+}
+.button:active {
+    background-color: #daddef;
 }
 
 .zero {

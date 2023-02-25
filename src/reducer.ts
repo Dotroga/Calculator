@@ -24,9 +24,10 @@ export const buttons =
   ]
 
 type ValueType = [string,string]
+export const value: ValueType = ['','0']
 
-export const value: ValueType = ['0','']
-
-export const reducer = (value: ValueType, action: [{type:string}]):ValueType => {
-return ['','']
+export const reducer = (state: ValueType = value, action:string):ValueType => {
+return ['','0']
 }
+
+
