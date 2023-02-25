@@ -1,0 +1,24 @@
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: 350px;
+    gap: 1px;
+}
+.button {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background-color: #e8ebfe;
+    cursor: pointer;
+}
+
+.zero {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    border-bottom-left-radius: 30px;
+}
+
+.equally {
+    border-bottom-right-radius: 30px;
+}
+
