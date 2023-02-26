@@ -25,25 +25,41 @@ export const buttons =
 export type DataType = typeof data
 export const data = {value: '0', error : false}
 
+
+
 export const reducer = (state:DataType = data, action: string):DataType => {
     if (action === 'CE') {
         return {...state, value: '0'}
     } else if (action === 'C') {
         return state.value.length === 1
           ? {...state, value: '0'}
-          : {...state, value: state.value.substring(0, state.value.length - 1)}
+          : state.value.slice(-1) === ' '
+            ? {...state, value: state.value.substring(0, state.value.length - 3)}
+            : {...state, value: state.value.substring(0, state.value.length - 1)}
     } else if (/\d/.test(action)) { // число от 0 до 9
-       return  state.value === '0'
-         ? {...state, value: action}
-         : {...state, value: state.value + action}
+        return  state.value === '0'
+          ? {...state, value: action, error: false}
+          : {...state, value: state.value + action, error: false}
     } else if (/,/.test(action)) {
-        return /,/.test(state.value)
+        let space = false
+        let comma = false
+        for (let i = state.value.length; i > 0; i--) {
+            const arr = state.value.split('')
+            if (arr[i] === ' ') space = true
+            if (arr[i] === ',') comma = true
+            if(comma)break
+            if(space)break
+        }
+        return comma && !space || !(/\d/.test(state.value.slice(-1)))
           ? {...state, error: true}
-          : {...state, value: state.value + action}
+          : {...state, value: state.value + action, error: false}
+    } else if (/[÷×−+]/.test(action)) {
+        return /[÷×−+]/.test(state.value.slice(-2))
+          ? {...state, error: true}
+          : {...state, value: state.value + ` ${action} `, error: false}
     }
     return state
 }
-
 
 
 
