@@ -12,6 +12,7 @@
     background-color: #e8ebfe;
     cursor: pointer;
     user-select: none;
+
 }
 .button:hover {
     background-color: #e1e4f6;
