@@ -36,7 +36,7 @@ export const reducer = (state:DataType = data, action: string):DataType => {
           : state.value.slice(-1) === ' '
             ? {...state, value: state.value.substring(0, state.value.length - 3)}
             : {...state, value: state.value.substring(0, state.value.length - 1)}
-    } else if (/\d/.test(action)) { // число от 0 до 9
+    } else if (/\d/.test(action)) { // число от 0 до 9 '
         return  state.value === '0'
           ? {...state, value: action, error: false}
           : {...state, value: state.value + action, error: false}
@@ -58,6 +58,7 @@ export const reducer = (state:DataType = data, action: string):DataType => {
           ? {...state, error: true}
           : {...state, value: state.value + ` ${action} `, error: false}
     }
+    setTimeout(()=>state.error = false, 1000);
     return state
 }
 

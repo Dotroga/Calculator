@@ -5,12 +5,15 @@ import {buttons, data, reducer} from "./reducer";
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer,data)
-  const change = (type: string) => dispatch(type)
+  const change = (type: string) => {
+    dispatch(type)
+  }
 
-  console.log(state)
+
+
   return (
     <div className="App">
-      <div className='Screen'>
+      <div className={`Screen ${state.error && 'error'}`}>
         <div>{state.value}</div>
       </div>
       <Buttons buttons={buttons} callBack={change}/>

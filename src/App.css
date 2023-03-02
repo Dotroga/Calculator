@@ -17,6 +17,10 @@
     margin-bottom: 1px;
     font-size: 40px;
 }
+.error {
+  color: red;
+}
+
 .Screen div {
     margin: 30px;
 }
